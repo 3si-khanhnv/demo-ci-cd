@@ -1,9 +1,0 @@
-<div class="list-comment">
-  <div class="comments" *ngFor="let comment of comments">
-    <div [class.right-date]="isRightDate" class="username-date">
-      <div class="user-name">{{ comment.userName }}</div>
-      <div class="date-time">{{ comment.dateTime }}</div>
-    </div>
-    <div class="content">{{ comment.content }}</div>
-  </div>
-</div>

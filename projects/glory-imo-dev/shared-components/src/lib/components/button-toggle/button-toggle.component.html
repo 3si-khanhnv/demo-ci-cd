@@ -1,5 +1,0 @@
-<mat-button-toggle-group *ngIf="toggleOptions.length" [value]="defaultOption">
-  <mat-button-toggle *ngFor="let option of toggleOptions" [value]="option.value" (change)="onChangeOption(option.value)">{{
-    option.label | translate
-  }}</mat-button-toggle>
-</mat-button-toggle-group>
