@@ -1,0 +1,41 @@
+@import "../../styles.scss";
+
+:host {
+  ::ng-deep {
+    imo-label-color {
+      cursor: pointer;
+    }
+    .top-location-removal {
+      width: max-content;
+      .top-location-removal-chart {
+        display: flex;
+        justify-content: center;
+      }
+      .title-chart-doughnut {
+        width: 100%;
+        text-align: center;
+        span {
+          font-size: 1.125rem;
+          font-weight: bold;
+          color: map-get($glory-main-natural, 700);
+          line-height: 1.2;
+        }
+      }
+
+      .labels {
+        imo-label-color.disabled {
+          cursor: default;
+          opacity: 0.5;
+        }
+        .label-color-title {
+          display: flex;
+          max-width: 100%;
+          word-break: break-word;
+        }
+      }
+    }
+    .chart-canvas {
+      transition: all 0.5s linear;
+    }
+  }
+}

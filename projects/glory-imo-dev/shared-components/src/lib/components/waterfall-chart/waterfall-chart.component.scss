@@ -1,0 +1,79 @@
+@import "../../styles.scss";
+
+:host {
+  .waterfall {
+    margin-top: 2.5rem;
+    width: 43.75rem;
+    max-width: 100%;
+    max-height: 424px;
+    overflow-y: hidden;
+    float: right;
+
+    &.responsive {
+      width: 100%;
+      float: none;
+      overflow-x: auto;
+    }
+  }
+
+  ::ng-deep {
+    .top-sales-totals {
+      max-width: 100%;
+      .title-location-sales-totals {
+        text-align: center;
+        span.title {
+          font-size: 1.125rem;
+          font-weight: bold;
+          color: map-get($glory-main-natural, 700);
+          line-height: 1.2;
+        }
+
+        &.responsive {
+          display: flex;
+          justify-content: center;
+          padding: 1rem 1rem 0.375rem 1rem;
+          min-height: 2.625rem;
+
+          .title {
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: map-get($glory-main-natural, 700);
+            line-height: 1.3125rem;
+            width: 100%;
+          }
+
+          &.space {
+            justify-content: space-between;
+            gap: 1rem;
+          }
+        }
+      }
+    }
+    .waterfall-chart {
+      .title-waterfall-chart {
+        text-align: center;
+        padding: 1rem 0 27px 0;
+        span {
+          font-size: 1.125rem;
+          font-weight: bold;
+          color: map-get($glory-main-natural, 700);
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: auto;
+  height: 0.75rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: map-get($glory-main-natural, 700);
+}
+
+::-webkit-scrollbar-track {
+  background-color: map-get($glory-main-natural, 300);
+}

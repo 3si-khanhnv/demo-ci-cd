@@ -1,0 +1,40 @@
+@import "../../styles.scss";
+
+:host {
+  .horizontal-chart-negative-item {
+    display: flex;
+    justify-content: center;
+    min-height: 26rem;
+    align-items: center;
+    .horizontal-group-bar-chart {
+      width: 43.75rem;
+      max-width: 100%;
+      float: right;
+    }
+  }
+  ::ng-deep {
+    .horizontal-chart-negative {
+      .title-horizontal-chart-negative {
+        text-align: center;
+        height: 4rem;
+        span {
+          font-size: 1.125rem;
+          font-weight: bold;
+          color: map-get($glory-main-natural, 700);
+          line-height: 1.2;
+          display: inline-block;
+          padding-top: 1rem;
+        }
+      }
+      .label-color-list {
+        display: flex;
+        justify-content: center;
+        height: 1rem;
+        padding-bottom: 1.5rem;
+        .label-color-item {
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+}

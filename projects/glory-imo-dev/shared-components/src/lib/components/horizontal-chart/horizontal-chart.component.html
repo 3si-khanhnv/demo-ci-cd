@@ -1,0 +1,21 @@
+<div class="horizontal-chart-negative">
+  <div class="title-horizontal-chart-negative">
+    <span>
+      {{ title | translate }}
+    </span>
+  </div>
+  <div class="horizontal-chart-negative-item">
+    <div class="horizontal-chart-negative" [style.minWidth]="width" style="width: 100%">
+      <canvas
+        class="content-horizontal-chart-negative"
+        #myCanvas
+        [height]="_height"
+        baseChart
+        [data]="_data"
+        [type]="chartType"
+        [options]="chartOptions"
+        [plugins]="pluginChartDataLabels"
+      ></canvas>
+    </div>
+  </div>
+</div>

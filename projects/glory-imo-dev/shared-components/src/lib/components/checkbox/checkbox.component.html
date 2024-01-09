@@ -1,0 +1,17 @@
+<div (click)="onCheckAfterClickedTemp($event)">
+  <mat-checkbox
+    #checkBox
+    (change)="onClickChanged($event)"
+    [disabled]="data.disabled"
+    [checked]="data.value"
+    (keyup)="onKeyupChange($event)"
+    [ngClass]="{ 'error-option-checked': data.isError }"
+    class="checkbox-option"
+    data-test="checkbox-option"
+  >
+    {{ data.label }}
+  </mat-checkbox>
+  <div class="children-checkbox" data-test="children-checkbox" *ngIf="data.children">
+    <imo-checkbox *ngFor="let child of data.children" [data]="child" (onCheckedValue)="onChildrenCheckChanged($event)"></imo-checkbox>
+  </div>
+</div>

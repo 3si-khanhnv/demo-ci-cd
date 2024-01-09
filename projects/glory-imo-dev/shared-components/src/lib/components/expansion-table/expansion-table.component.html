@@ -1,0 +1,53 @@
+<div fxLayout="column">
+  <!-- Start of header -->
+  <div fxFlex="100%" class="header" fxLayout="row">
+    <!-- TODO:: For check all feature
+    <div fxFlex="40px" class="checkbox" fxFlexAlign="center" *ngIf="checkbox">
+      <mat-checkbox
+        [checked]="hasValue() && isAllSelected()"
+        [indeterminate]="hasValue() && !isAllSelected()"
+        [aria-label]="labels?.checkbox?.aria"
+        (click)="$event.stopPropagation()"
+        (keydown)="$event.stopPropagation()"
+        (change)="onAllCheck($event, !isAllSelected())"
+      ></mat-checkbox>
+    </div> -->
+    <div fxFlex="60px"></div>
+    <div
+      fxFlex
+      fxFlexAlign="center"
+      *ngFor="let column of columns"
+      class="mat-header-cell {{ classOnColumn(column) }}"
+      (click)="onColumnSort(column)"
+    >
+      <span>{{ column | titlecase }}</span>
+      <!-- TODO:: For filter feature
+      <button>{{ column | titlecase }}
+          <imo-svg-icon class="sort" [url]="sortIconByCol(column)" [alt]="sort.alt"></imo-svg-icon>
+      </button> -->
+    </div>
+  </div>
+  <!-- End of header -->
+
+  <ng-container *ngIf="table?.data">
+    <div fxFlex="100%" fxLayout="column">
+      <imo-expansion-panel
+        class="row"
+        *ngFor="let row of table?.data; let i = index; trackBy: trackById"
+        fxFlex
+        [id]="i"
+        [checkbox]="checkbox"
+        [radio]="radio"
+        [columns]="expandColumns"
+        [data]="row"
+        [labels]="labels?.expansion"
+        (check)="onCheck(row)"
+        data-test="expansion-row"
+      >
+        <ng-container *ngIf="expansion">
+          <ng-template [ngTemplateOutlet]="expansion" [ngTemplateOutletContext]="{ $implicit: row }"></ng-template>
+        </ng-container>
+      </imo-expansion-panel>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,57 @@
+@import "../../styles.scss";
+
+$highlight-color: map-get($glory-main-natural, 000);
+
+:host ::ng-deep {
+  height: 100%;
+  .item-open-other-app {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    button {
+      // height: 36px;
+      height: 2rem;
+      min-width: 82px;
+      padding: 7px 23px;
+      font-size: 1rem;
+      text-align: center;
+      color: map-get($glory-main-natural, 000);
+      text-transform: capitalize;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+
+      &:hover {
+        background-color: rgba($color: $highlight-color, $alpha: 0.2);
+        border-radius: 4px;
+      }
+
+      &:active {
+        background-color: rgba($color: $highlight-color, $alpha: 0);
+      }
+    }
+
+    &.selected button {
+      &:hover {
+        background-color: rgba($color: $highlight-color, $alpha: 0.4);
+      }
+
+      &:active {
+        background-color: rgba($color: $highlight-color, $alpha: 0.2);
+      }
+    }
+
+    &.open-other-app {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+    .open-other-app {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

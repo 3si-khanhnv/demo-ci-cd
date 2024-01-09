@@ -1,0 +1,103 @@
+@import "../../../styles.scss";
+:host {
+  ::ng-deep {
+    .menu-container {
+      display: flex;
+      align-items: center;
+      .menu-bar {
+        border-radius: 4px;
+        color: #ffffff;
+        justify-content: center;
+        min-width: 6.375rem;
+        margin: 16px 11px;
+        background-color: #19243b;
+        border: 0;
+        text-align: center;
+        padding: 7px 0;
+        border: 0;
+        height: 2rem;
+        font-size: 1rem;
+
+        .parent-title {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.flex-item {
+  height: 2rem;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.75rem !important;
+  .child-title {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    height: 2rem;
+    color: #101624;
+    font-size: 0.875rem;
+    font-family: "Roboto";
+  }
+}
+
+.disable-item {
+  opacity: 0.5;
+}
+
+.active-item {
+  font-weight: bold;
+  background-color: map-get($colors, dark-gray) !important;
+}
+
+.active-group {
+  border-top: 1px solid;
+  border-top-color: map-get($colors, gray);
+}
+
+.enable-item:hover {
+  background-color: #2a364d;
+}
+
+.enable-item:active {
+  background: #b4b9c7;
+}
+
+.hidden-item {
+  display: none;
+}
+::ng-deep {
+  .cdk-overlay-connected-position-bounding-box {
+    .cdk-overlay-pane {
+      .custom-menu-header {
+        margin-left: 4px;
+        min-width: 13rem;
+        min-height: 2rem;
+        .mat-mdc-menu-item-text {
+          width: 100%;
+          display: flex;
+        }
+        .mat-mdc-menu-submenu-icon {
+          display: none;
+        }
+        .mat-mdc-menu-content .enable-item:hover,
+        .mat-mdc-menu-item:not([disabled]).mat-mdc-menu-item-highlighted {
+          background: #e7eaf2;
+        }
+        .mat-mdc-menu-content .enable-item:active {
+          background: #b4b9c7;
+        }
+      }
+    }
+  }
+  .cdk-overlay-connected-position-bounding-box {
+    .parent-class {
+      margin-top: 0.5rem;
+      margin-left: 0 !important;
+    }
+  }
+}

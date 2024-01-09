@@ -1,0 +1,41 @@
+@import "../../styles.scss";
+
+:host ::ng-deep {
+  .mat-mdc-radio-group {
+    display: flex;
+    flex-direction: column;
+    .mat-mdc-radio-checked {
+      .mdc-form-field {
+        .mdc-radio {
+          .mdc-radio__background {
+            .mdc-radio__outer-circle {
+              border-width: 6px;
+            }
+            .mdc-radio__inner-circle {
+              border-width: 0;
+              transform: scale(0.4);
+            }
+          }
+        }
+      }
+    }
+
+    .mdc-label {
+      font-size: 1rem;
+      color: map-get($glory-main-natural, 900);
+      padding-left: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .mat-mdc-radio-button {
+    margin-bottom: 0.25rem;
+    height: 1.25rem;
+  }
+
+  .disable-radio {
+    opacity: 0.5;
+  }
+}

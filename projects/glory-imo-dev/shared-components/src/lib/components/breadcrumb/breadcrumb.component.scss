@@ -1,0 +1,43 @@
+@import "../../styles.scss";
+
+.breadcrumb {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  a {
+    display: flex;
+    align-items: flex-start;
+    height: 1.5rem;
+    color: map-get($map: $glory-main-natural, $key: 600);
+    font-size: 0.875rem;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+
+    > span {
+      line-height: 1rem;
+      padding-left: 0.25rem;
+      padding-right: 0.5rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+
+    > imo-svg-icon {
+      display: block;
+      width: 0.75rem;
+      height: 0.75rem;
+      margin-top: 0.1875rem;
+      margin-bottom: 0.3125rem;
+    }
+  }
+  .active-routing {
+    &:hover {
+      background-color: map-get($glory-main-natural, 100);
+    }
+
+    &:active {
+      background-color: map-get($glory-main-natural, 200);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<div class="assets-status">
+  <imo-status-icon [class]="type" [type]="type"></imo-status-icon>
+  <div class="status-info">
+    <div [class]="type">
+      <p class="title" [ngClass]="isResize ? 'resize-text' : 'not-resize-text'">{{ data?.label | translate }}</p>
+      <div class="list-error">
+        <div class="time">
+          <p *ngIf="data?.dateTime" class="date-time">{{ data?.dateTime | localizedDate: "L HH:mm" }}</p>
+          <p *ngIf="data?.countTime" class="count-time">{{ data?.countTime }}</p>
+          <p *ngIf="data?.warning" class="data-warning">{{ data?.warning | translate }}</p>
+        </div>
+        <div *ngFor="let error of data?.subAssets" class="data-error">
+          <p class="title-error">{{ error?.title | translate }}</p>
+          <p class="content-error">{{ error?.message | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

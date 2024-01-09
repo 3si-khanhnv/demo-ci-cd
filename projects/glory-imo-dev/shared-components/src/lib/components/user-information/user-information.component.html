@@ -1,0 +1,65 @@
+<div class="content-information">
+  <div class="property name">
+    <label class="label">{{ userInformationLabel.fullName | translate }}</label>
+    <label class="value">{{ user.fullName }}</label>
+  </div>
+
+  <div class="property email">
+    <label class="label">{{ userInformationLabel.email | translate }}</label>
+    <label class="value">{{ user.emailAddress }}</label>
+  </div>
+
+  <div class="property sms">
+    <label class="label">{{ userInformationLabel.sms | translate }}</label>
+    <label class="value">{{ user.smsAddress }}</label>
+  </div>
+
+  <div class="property phone">
+    <label class="label">{{ userInformationLabel.phone | translate }}</label>
+    <label class="value">{{ user.phoneNumber }}</label>
+  </div>
+
+  <div class="property country">
+    <label class="label">{{ userInformationLabel.country | translate }}</label>
+    <label class="value">{{ user.countryCode }}</label>
+  </div>
+
+  <div class="property address">
+    <label class="label">{{ userInformationLabel.address | translate }}</label>
+    <label class="value">{{ user.physicalAddress }}</label>
+  </div>
+
+  <div class="property city">
+    <label class="label">{{ userInformationLabel.city | translate }}</label>
+    <label class="value">{{ user.city }}</label>
+  </div>
+
+  <div class="property state">
+    <label class="label">{{ userInformationLabel.state | translate }}</label>
+    <label class="value">{{ user.state }}</label>
+  </div>
+
+  <div class="property post-code">
+    <label class="label">{{ userInformationLabel.postCode | translate }}</label>
+    <label class="value">{{ user.postalCode }}</label>
+  </div>
+
+  <div class="property timezone">
+    <label class="label">{{ userInformationLabel.timezone | translate }}</label>
+    <label class="value">{{ user.timezone }}</label>
+  </div>
+
+  <div class="property language">
+    <label class="label">{{ userInformationLabel.language | translate }}</label>
+    <label class="value">{{ user.language }}</label>
+  </div>
+
+  <div class="property roles">
+    <label class="label">{{ userInformationLabel.roles | translate }}</label>
+    <label class="value">
+      <ul>
+        <li *ngFor="let item of user.roles">{{ item.role }}</li>
+      </ul>
+    </label>
+  </div>
+</div>

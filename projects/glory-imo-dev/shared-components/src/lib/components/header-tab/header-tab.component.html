@@ -1,0 +1,21 @@
+<div>
+  <!-- <ng-container *ngFor="let tab of tabs; let i = index">
+    <imo-header-tab-item
+      *ngIf="tab.isPermission"
+      [text]="tab.name | translate"
+      (click)="onClickTab(tab.name)"
+      [ngClass]="{ activated: activeRoutes[i] }"
+      [navItems]="tab.navItems"
+    ></imo-header-tab-item>
+  </ng-container> -->
+  <ng-container>
+    <imo-header-tab-item *ngIf="!!tabs" [navItems]="tabs"></imo-header-tab-item>
+  </ng-container>
+  <ng-container *ngFor="let app of otherApplicationLinks">
+    <imo-header-tab-item
+      [text]="app.applicationName"
+      [isOpenOtherApp]="true"
+      (click)="openedOtherApp(app.applicationUrl)"
+    ></imo-header-tab-item>
+  </ng-container>
+</div>

@@ -1,0 +1,14 @@
+<div *ngIf="listWithoutCheckbox.length" class="list-with-static" data-test="list-with-static">
+  <li *ngFor="let option of listWithoutCheckbox">
+    <span>{{ option.label }}</span>
+  </li>
+</div>
+
+<imo-checkbox-list
+  *ngIf="listWithCheckbox.length"
+  class="list-with-checkbox"
+  data-test="list-with-checkbox"
+  [list]="listWithCheckbox"
+  [checkedItem]="data.checkedItem"
+  (checked)="checkedOptions.emit($event)"
+></imo-checkbox-list>

@@ -1,0 +1,16 @@
+<mat-checkbox
+  *ngFor="let checkbox of list; index as i"
+  [ngClass]="{ 'd-block': isColumn }"
+  [checked]="isChecked(checkbox.value)"
+  [disabled]="checkbox.disabled"
+  (change)="onCheck($event.checked, checkbox.value)"
+  (keyup)="onKeyup($event, i)"
+  [ngStyle]="{
+    display: checkbox.isHidden ? 'none' : 'flex'
+  }"
+>
+  <span class="label">
+    <imo-svg-icon [width]="20" [height]="20" [icon]="checkbox.icon" *ngIf="!!checkbox.icon"></imo-svg-icon>
+    {{ checkbox.label | translate }}</span
+  >
+</mat-checkbox>

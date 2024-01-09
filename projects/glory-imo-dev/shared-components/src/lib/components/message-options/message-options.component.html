@@ -1,0 +1,28 @@
+<div *ngIf="options">
+  <ng-container [ngSwitch]="options.status">
+    <imo-svg-icon
+      *ngSwitchCase="'warning'"
+      [ngClass]="'text-' + options.status"
+      [icon]="statusWarning.icon"
+      [text]="options.message"
+    ></imo-svg-icon>
+    <imo-svg-icon
+      *ngSwitchCase="'danger'"
+      [ngClass]="'text-' + options.status"
+      [icon]="statusError.icon"
+      [text]="options.message"
+    ></imo-svg-icon>
+    <imo-svg-icon
+      *ngSwitchCase="'successfully'"
+      [ngClass]="'text-' + options.status"
+      [icon]="checkCircleOutline.icon"
+      [text]="options.message"
+    ></imo-svg-icon>
+    <imo-svg-icon
+      *ngSwitchCase="'error'"
+      [ngClass]="'text-' + options.status"
+      [icon]="statusError.icon"
+      [text]="options.message"
+    ></imo-svg-icon>
+  </ng-container>
+</div>

@@ -1,0 +1,68 @@
+<header>
+  <imo-header-title [title]="title | translate" (click)="onClickTitle()"></imo-header-title>
+  <imo-header-tab
+    [tabs]="tabs"
+    [otherApplicationLinks]="userInformation?.otherApplicationLinks"
+    (changedTab)="onChangedTab($event)"
+    (openOtherApp)="openedOtherApp($event)"
+    [ngClass]="{ 'menu-opened': isUserMenuOpened }"
+  >
+  </imo-header-tab>
+  <div class="filler"></div>
+  <div #userMenu class="user-frame" [ngClass]="{ 'menu-opened': isUserMenuOpened }">
+    <div>
+      <mat-icon class="user-img" (click)="isUserMenuOpened = !isUserMenuOpened">{{ settings.labelIconPerson }}</mat-icon>
+    </div>
+  </div>
+
+  <imo-dropdown-menu *ngIf="isUserMenuOpened">
+    <imo-dropdown-menu-item [label]="userInformation.fullName"></imo-dropdown-menu-item>
+    <imo-dropdown-menu-item
+      data-test="profile"
+      class="profile"
+      [label]="settings.profile | translate"
+      (click)="onClickUserInformation(modalContent, modalHeader)"
+    >
+    </imo-dropdown-menu-item>
+    <imo-dropdown-menu-item
+      data-test="release-notes"
+      class="release-notes"
+      [label]="settings.releaseNotes | translate"
+      (click)="onClickReleaseNotes(modalContentReleaseNotes, modalHeaderReleaseNotes)"
+    >
+    </imo-dropdown-menu-item>
+    <imo-dropdown-menu-item
+      data-test="licenses"
+      class="licenses"
+      [label]="settings.licenses | translate"
+      (click)="onClickLicenses(modalContentLicenses, modalHeaderLicenses)"
+    >
+    </imo-dropdown-menu-item>
+    <imo-dropdown-menu-item
+      data-test="change-password"
+      class="change-password"
+      [label]="settings.changePassword | translate"
+      (click)="onClickChangePassword()"
+    >
+    </imo-dropdown-menu-item>
+    <imo-dropdown-menu-item *ngFor="let item of userMenus" [label]="item" (click)="onClickUserMenu(item)"> </imo-dropdown-menu-item>
+  </imo-dropdown-menu>
+</header>
+
+<ng-template #modalHeader>{{ settings.profile | translate }}</ng-template>
+
+<ng-template #modalHeaderReleaseNotes>{{ settings.releaseNotes | translate }}</ng-template>
+
+<ng-template #modalHeaderLicenses>{{ settings.licenses | translate }}</ng-template>
+
+<ng-template #modalContent>
+  <imo-user-information [user]="userInformation"></imo-user-information>
+</ng-template>
+
+<ng-template #modalContentReleaseNotes>
+  <imo-release-notes [releaseNotes]="releaseNotes"> </imo-release-notes>
+</ng-template>
+
+<ng-template #modalContentLicenses>
+  <imo-licenses [licenses]="licenses"> </imo-licenses>
+</ng-template>

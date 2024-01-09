@@ -1,0 +1,300 @@
+@import "../../styles.scss";
+
+:host ::ng-deep {
+  .form-input {
+    .mat-mdc-text-field-wrapper {
+      padding: 0;
+      .mat-mdc-form-field-flex {
+        position: relative;
+        display: inline-block;
+        .mat-mdc-form-field-infix::before {
+          content: "";
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid rgba(0, 0, 0, 0.54);
+          margin: 0;
+          position: absolute;
+          right: 10px;
+          top: calc(50% - 2px);
+          cursor: pointer;
+        }
+        .mat-mdc-select-arrow-wrapper {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          width: 90%;
+        }
+        .mat-mdc-form-field-infix {
+          span {
+            label {
+              width: 80%;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
+    &:hover {
+      .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+        .mdc-notched-outline
+        .mdc-notched-outline__leading,
+      .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+        .mdc-notched-outline
+        .mdc-notched-outline__notch,
+      .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+        .mdc-notched-outline
+        .mdc-notched-outline__trailing {
+        border-color: var(--mdc-outlined-text-field-outline-color);
+      }
+    }
+  }
+
+  .mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+      margin: 0.25rem 0;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0;
+      .mat-mdc-form-field-infix {
+        border-radius: 4px;
+        padding: 0.475rem 0.625rem;
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+        width: 100%;
+        min-width: 11.25rem;
+
+        .mat-mdc-form-field-label-wrapper {
+          > label {
+            padding-left: 0.625rem;
+            color: map-get($map: $glory-main-natural, $key: 600);
+          }
+        }
+
+        input {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          width: 90%;
+          letter-spacing: 0;
+        }
+      }
+    }
+
+    &.mat-mdc-form-field-disabled {
+      .mat-mdc-form-field-wrapper {
+        opacity: 0.5;
+      }
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+  }
+
+  .mat-mdc-form-field-appearance-legacy {
+    .mat-mdc-form-field-underline {
+      background-color: unset;
+      display: none;
+    }
+  }
+  .mat-mdc-form-field-appearance-legacy,
+  .mat-mdc-form-field-appearance-outline {
+    &.mat-mdc-form-field-can-float {
+      &.mat-mdc-form-field-should-float {
+        .mat-mdc-form-field-outline-gap {
+          border-top-color: currentColor;
+        }
+        .mat-mdc-form-field-label {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .mat-mdc-select-trigger {
+    span {
+      color: map-get($map: $glory-main-natural, $key: 900);
+      font-size: 14px;
+    }
+  }
+
+  .multiple-select {
+    .mat-mdc-form-field {
+      &.has-error {
+        .mat-mdc-text-field-wrapper {
+          box-shadow: 0 0 0 2px rgba(map-get($glory-secondary-red, 600), $alpha: 0.3) !important;
+          border-radius: 4px;
+        }
+      }
+      .mat-mdc-text-field-wrapper {
+        --mdc-outlined-text-field-focus-outline-width: 1px;
+        &.mdc-text-field--disabled {
+          .mat-mdc-select-placeholder {
+            opacity: .5;
+          }
+        }
+      }
+
+      &.mat-focused {
+        .mat-mdc-text-field-wrapper {
+          box-shadow: 0 0 0 2px rgba(map-get($glory-secondary-blue, 400), $alpha: 0.3);
+          border-radius: 4px;
+        }
+        .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__leading,
+        .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__notch,
+        .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__trailing {
+          border-color: map-get($map: $glory-secondary-blue, $key: 400);
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+    min-width: max-content;
+    .mat-mdc-select-panel.select-multi-box {
+      margin-top: 0.25rem;
+      margin-bottom: 1.75rem;
+      // margin-left: 1.75rem;
+      min-width: 10rem !important;
+      max-width: initial;
+      box-shadow: 0px 0.125rem 0.25rem rgba(map-get($glory-main-natural, 1000), $alpha: 0.3);
+      padding: 0.5rem 0;
+      border: 1px solid map-get($map: $glory-main-natural, $key: 300);
+      border-radius: 0.25rem;
+
+      .mat-mdc-option {
+        &,
+        .mat-mdc-optgroup-label {
+          height: 2rem;
+          font-size: 0.875rem;
+        }
+
+        > .mat-pseudo-checkbox {
+          border-width: 0.0625rem;
+          height: 1.25rem;
+          width: 1.25rem;
+          margin-right: 0.75rem;
+          background-color: map-get($map: $glory-main-natural, $key: 000);
+          border-radius: 4px;
+
+          &:not(.mat-pseudo-checkbox-checked) {
+            border-color: map-get($map: $glory-main-natural, $key: 400);
+          }
+
+          &.mat-pseudo-checkbox-checked {
+            &::after {
+              left: 0.125rem;
+              width: 0.75rem;
+              height: 0.375rem;
+            }
+          }
+
+          &.mat-pseudo-checkbox-checked,
+          &.mat-pseudo-checkbox-indeterminate {
+            background-color: map-get($map: $glory-secondary-blue, $key: 400);
+          }
+        }
+
+        &.mat-mdc-selected {
+          color: map-get($map: $glory-main-natural, $key: 900);
+          background-color: map-get($map: $glory-setting-colors, $key: dropdown-focus);
+        }
+
+        &:focus {
+          &:not(.mat-mdc-option-disabled) {
+            background-color: transparent;
+          }
+        }
+
+        &:hover {
+          &:not(.mat-mdc-option-disabled) {
+            background-color: map-get($map: $glory-main-natural, $key: 200);
+          }
+        }
+
+        &.mat-active {
+          background-color: map-get($map: $glory-setting-colors, $key: dropdown-focus);
+        }
+
+        &.hide-checkbox .mat-pseudo-checkbox {
+          display: none;
+        }
+      }
+    }
+    div.mat-mdc-autocomplete-panel.mat-mdc-autocomplete-visible {
+      margin-top: 0.2rem;
+      min-width: 10rem !important;
+      width: initial !important;
+      max-width: initial;
+      padding: 0.5rem 0;
+      box-shadow: 0px 0.125rem 0.25rem rgba(map-get($glory-main-natural, 1000), $alpha: 0.3);
+      border: 1px solid map-get($map: $glory-main-natural, $key: 300);
+      border-radius: 0.25rem;
+
+      .mat-mdc-option {
+        &,
+        .mat-mdc-optgroup-label {
+          height: 2rem;
+          font-size: 0.875rem;
+        }
+
+        > .mat-pseudo-checkbox {
+          display: none;
+          border-width: 0.0625rem;
+          height: 1.25rem;
+          width: 1.25rem;
+          margin-right: 0.75rem;
+          background-color: map-get($map: $glory-main-natural, $key: 000);
+          border-radius: 4px;
+
+          &:not(.mat-pseudo-checkbox-checked) {
+            border-color: map-get($map: $glory-main-natural, $key: 400);
+          }
+
+          &.mat-pseudo-checkbox-checked {
+            &::after {
+              left: 0.125rem;
+              width: 0.75rem;
+              height: 0.375rem;
+            }
+          }
+
+          &.mat-pseudo-checkbox-checked,
+          &.mat-pseudo-checkbox-indeterminate {
+            background-color: map-get($map: $glory-secondary-blue, $key: 400);
+          }
+        }
+
+        &.mat-mdc-selected {
+          color: map-get($map: $glory-main-natural, $key: 900);
+          background-color: map-get($map: $glory-setting-colors, $key: dropdown-focus);
+        }
+
+        &:focus {
+          &:not(.mat-mdc-option-disabled) {
+            background-color: transparent;
+          }
+        }
+
+        &:hover {
+          &:not(.mat-mdc-option-disabled) {
+            background-color: map-get($map: $glory-main-natural, $key: 200);
+          }
+        }
+
+        &.mat-active {
+          background-color: map-get($map: $glory-setting-colors, $key: dropdown-focus);
+        }
+
+        &.hide-checkbox .mat-pseudo-checkbox {
+          display: none;
+        }
+      }
+    }
+  }
+}

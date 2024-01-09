@@ -1,0 +1,21 @@
+<div *ngFor="let item of releaseNotesKeys" class="content-release-notes">
+  <div class="release-notes-version">
+    <h1>{{ labelReleaseNotes.version | translate }} {{ item }}</h1>
+  </div>
+
+  <div class="new-content" *ngIf="releaseNotes[item].new?.length">
+    <p>{{ labelReleaseNotes.new | translate }}</p>
+    <ul *ngFor="let newContent of releaseNotes[item].new">
+      <li>{{ newContent }}</li>
+    </ul>
+  </div>
+
+  <div class="fixed-content" *ngIf="releaseNotes[item].fixed?.length">
+    <p>{{ labelReleaseNotes.fixed | translate }}</p>
+    <ul *ngFor="let fixedContent of releaseNotes[item].fixed">
+      <li>
+        {{ fixedContent }}
+      </li>
+    </ul>
+  </div>
+</div>

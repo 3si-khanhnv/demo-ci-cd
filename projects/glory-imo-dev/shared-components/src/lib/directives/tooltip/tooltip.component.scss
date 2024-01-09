@@ -1,0 +1,190 @@
+@import "../../styles.scss";
+
+:host {
+  background-color: map-get($map: $glory-main-natural, $key: 000);
+  color: map-get($map: $colors, $key: "black");
+  text-align: center;
+  content: " ";
+  border-radius: 4px;
+  padding: 8px;
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+  display: block;
+  opacity: 0;
+  -webkit-transition: opacity 300ms;
+  -moz-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  transition: opacity 300ms;
+  top: 0;
+  left: 0;
+  border: 1px solid map-get($glory-main-natural, 400);
+}
+
+:host.tooltip-show {
+  opacity: 0.8;
+}
+
+:host.tooltip-shadow {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+}
+
+:host.tooltip::after,
+:host.tooltip::before {
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+:host.tooltip-top::after {
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-top-color: rgba(255, 255, 255, 0.8);
+}
+
+:host.tooltip-top::before {
+  top: 100%;
+  left: 50%;
+  margin-left: -9px;
+  border-width: 9px;
+  border-top-color: map-get($glory-main-natural, 400);
+}
+
+:host.tooltip-bottom::after {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+:host.tooltip-bottom::before {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -9px;
+  border-width: 9px;
+  border-bottom-color: map-get($glory-main-natural, 400);
+}
+
+:host.tooltip-left::after {
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-left-color: rgba(255, 255, 255, 0.8);
+}
+
+:host.tooltip-left::before {
+  top: 50%;
+  left: 100%;
+  margin-top: -9px;
+  border-width: 9px;
+  border-left-color: map-get($glory-main-natural, 400);
+}
+
+:host.tooltip-right::after {
+  top: 50%;
+  right: 100%;
+  margin-top: -8px;
+  border-width: 8px;
+  border-right-color: rgba(255, 255, 255, 0.8);
+}
+
+:host.tooltip-right::before {
+  top: 50%;
+  right: 100%;
+  margin-top: -9px;
+  border-width: 9px;
+  border-right-color: map-get($glory-main-natural, 400);
+}
+// Light
+// .tooltip-light.tooltip-shadow {
+//   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+// }
+
+// .tooltip-light::after {
+//   display: none;
+// }
+
+// .tooltip-light {
+//   border: 1px solid rgba(0, 0, 0, 0.06);
+//   background-color: #fff;
+//   color: black;
+//   .tooltip-arrow {
+//     position: absolute;
+//     width: 10px;
+//     height: 10px;
+//     transform: rotate(135deg);
+//     background-color: rgba(0, 0, 0, 0.07);
+//   }
+//   .tooltip-arrow::after {
+//     background-color: #fff;
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     width: 10px;
+//     height: 10px;
+//   }
+// }
+
+// .tooltip-top.tooltip-light {
+//   margin-top: -2px;
+//   .tooltip-arrow {
+//     top: 100%;
+//     left: 50%;
+//     margin-top: -4px;
+//     margin-left: -5px;
+//     background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.07) 50%, transparent 50%);
+//   }
+//   .tooltip-arrow::after {
+//     top: 1px;
+//     right: 1px;
+//   }
+// }
+
+// .tooltip-bottom.tooltip-light {
+//   .tooltip-arrow {
+//     bottom: 100%;
+//     left: 50%;
+//     margin-bottom: -4px;
+//     margin-left: -5px;
+//     background: linear-gradient(to top right, rgba(0, 0, 0, 0.1) 50%, transparent 50%);
+//   }
+//   .tooltip-arrow::after {
+//     top: -1px;
+//     right: -1px;
+//   }
+// }
+
+// .tooltip-left.tooltip-light {
+//   .tooltip-arrow {
+//     top: 50%;
+//     left: 100%;
+//     margin-top: -5px;
+//     margin-left: -4px;
+//     background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.07) 50%, transparent 50%);
+//   }
+//   .tooltip-arrow::after {
+//     top: 1px;
+//     right: -1px;
+//   }
+// }
+
+// .tooltip-right.tooltip-light {
+//   .tooltip-arrow {
+//     top: 50%;
+//     right: 100%;
+//     margin-top: -5px;
+//     margin-right: -4px;
+//     background: linear-gradient(to top left, rgba(0, 0, 0, 0.07) 50%, transparent 50%);
+//   }
+//   .tooltip-arrow::after {
+//     top: -1px;
+//     right: 1px;
+//   }
+// }

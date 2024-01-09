@@ -1,0 +1,38 @@
+<div
+  mat-list-item
+  *ngFor="let item of items; let i = index"
+  class="container align-center"
+  [ngClass]="{
+    active: item?.route ? router.isActive(item?.route, false) : false,
+    'side-nav-state display-item': !sideNavState
+  }"
+>
+  <a
+    routerLinkActive="active"
+    [routerLink]="[item?.route]"
+    [class.active]="router.isActive(this.pageTo + item?.route, false)"
+    (click)="onItemSelected(item)"
+    ><div class="box-bg">
+      <span [@animateText]="linkText ? 'show' : 'hide'">{{ item?.displayName }} </span>
+      <imo-svg-icon
+        class="icon"
+        *ngIf="item.isShowIcon"
+        fxFlex="100%"
+        [icon]="checkCircleOutline.icon"
+        width="20"
+        height="20"
+      ></imo-svg-icon></div
+  ></a>
+</div>
+
+<div
+  class="footer-sidebar"
+  [ngClass]="{
+    'side-nav-state': !sideNavState
+  }"
+>
+  <a href="javascript:;" (click)="onSineNavToggle()">
+    <imo-svg-icon *ngIf="sideNavState" fxFlex="100%" [icon]="caretDoubleLeft.icon" width="24" height="24"></imo-svg-icon>
+    <imo-svg-icon *ngIf="!sideNavState" fxFlex="100%" [icon]="caretDoubleRight.icon" width="24" height="24"></imo-svg-icon>
+  </a>
+</div>

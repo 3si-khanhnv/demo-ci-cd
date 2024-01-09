@@ -1,0 +1,379 @@
+@import "../../styles.scss";
+:host ::ng-deep {
+  .group-info {
+    background-color: rgb(255 255 255 / 80%);
+    width: 12.5rem;
+    position: absolute;
+    z-index: 9;
+    top: 1px;
+    left: 1px;
+
+    ::-webkit-scrollbar {
+      width: 0.25rem;
+      height: 100%;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: map-get($glory-main-natural, 700);
+    }
+    ::-webkit-scrollbar-track {
+      background-color: map-get($glory-main-natural, 300);
+      margin: 0.25rem 0;
+    }
+  }
+
+  .mat-mdc-tab-group.mat-primary .mat-ink-bar,
+  .mat-mdc-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: map-get($glory-secondary-blue, 400); // add styles properties here
+  }
+
+  mat-tab-group mat-tab-body:nth-child(2) {
+    height: 22rem;
+  }
+
+  mat-tab-group {
+    mat-tab-header {
+      .mat-mdc-tab-labels {
+        height: 1.9375rem;
+
+        .mdc-tab {
+          opacity: 1;
+          width: 6rem;
+          margin: 0 2px;
+          height: 2rem;
+          min-width: 3rem;
+
+          &:hover {
+            background: #eaebed 0% 0% no-repeat padding-box;
+          }
+
+          .mdc-tab__text-label {
+            color: map-get($colors, black);
+          }
+
+          &--active {
+            .mdc-tab__text-label {
+              color: map-get($glory-secondary-blue, 400);
+            }
+
+            .mdc-tab-indicator__content {
+              border-color: map-get($glory-secondary-blue, 400);
+              border-width: 2px;
+            }
+
+            .header-label {
+              font-weight: bold;
+            }
+          }
+        }
+
+        .header-label {
+          font-style: normal;
+          font-variant: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.375rem;
+        }
+      }
+    }
+  }
+
+  .tabs-group {
+    .total-locations {
+      min-height: 2.5rem;
+      padding: 0 0.75rem;
+      text-overflow: ellipsis;
+      border-bottom: 0.0625rem solid map-get($colors, gray);
+      .item-total {
+        .total-number,
+        .label-locations {
+          font-size: 1rem;
+          line-height: 1.125rem;
+          font-weight: bold;
+          color: map-get($colors, black);
+        }
+      }
+      .item-label {
+        text-overflow: ellipsis;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
+        color: map-get($glory-main-natural, 600);
+        margin-bottom: 0.3125rem;
+        .total-connector {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .group-location-name {
+      min-height: 2rem;
+      padding: 0 0.75rem;
+      text-overflow: ellipsis;
+      .group-name {
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+        font-weight: bold;
+        color: map-get($colors, black);
+        white-space: nowrap;
+        max-width: 11rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .location,
+    .active-location {
+      .title {
+        padding: 0;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+      }
+    }
+    .active-location {
+      .title {
+        font-weight: bold;
+        color: map-get($glory-secondary-blue, 400);
+      }
+    }
+    .imo-select-info {
+      .assets-status {
+        cursor: pointer;
+        width: calc(100% - 1rem);
+        margin: 0 0.5rem;
+        height: 2.1875rem;
+        min-height: 100%;
+        imo-status-icon {
+          display: none;
+        }
+        .status-info {
+          padding: 0 1rem;
+          div {
+            display: flex;
+            align-items: center;
+            p {
+              max-width: 9.5rem;
+            }
+          }
+        }
+      }
+      .assets-status:hover {
+        background: map-get($map: $glory-setting-colors, $key: assets-status-hover) 0% 0% no-repeat padding-box;
+      }
+    }
+  }
+
+  .imo-operator-rate {
+    background-color: transparent;
+    .imo-chart-rate {
+      position: relative;
+      svg {
+        height: 10rem;
+        margin-left: 1rem;
+      }
+    }
+
+    .imo-status {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 2.5rem;
+      display: flex;
+      gap: 0.375rem;
+      border-bottom: 1px solid map-get($colors, gray);
+      padding-left: 0.8125rem;
+      padding-right: 1rem;
+      .imo-status-type {
+        text-align: center;
+        width: 1.5rem;
+        .status-icon {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          .good-status,
+          .missing-status,
+          .warning-status,
+          .error-status {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
+      }
+      .imo-status-value {
+        width: 8.625rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        .imo-value {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+          text-align: right;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: bold;
+        }
+      }
+      .imo-status-value-Good,
+      .imo-status-value-Arrival,
+      .imo-status-value-Error,
+      .imo-status-value-Warning,
+      .imo-status-value-Missing,
+      .imo-status-value-Nonarrival,
+      .imo-status-value-CI-Connector {
+        font-size: 1.5rem;
+        line-height: 2.0625rem;
+      }
+      .imo-status-name-Good,
+      .imo-status-name-Arrival,
+      .imo-status-name-Error,
+      .imo-status-name-Warning,
+      .imo-status-name-Missing,
+      .imo-status-name-Nonarrival,
+      .imo-status-name-CI-Connector {
+        font-size: 1rem;
+        line-height: 1.375rem;
+      }
+      .imo-name {
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+
+        width: 4.5625rem;
+      }
+      .imo-status-name-CI-Connector .imo-name {
+        width: 6.4375rem;
+      }
+      .imo-status-value-Good,
+      .imo-status-name-Good,
+      .imo-status-value-Arrival,
+      .imo-status-name-Arrival {
+        letter-spacing: 0;
+        color: map-get($status, good);
+      }
+      .imo-status-value-Error,
+      .imo-status-name-Error {
+        letter-spacing: 0;
+        color: map-get($status, error);
+      }
+      .imo-status-value-Warning,
+      .imo-status-name-Warning {
+        letter-spacing: 0;
+        color: map-get($status, warning);
+      }
+      .imo-status-value-Missing,
+      .imo-status-name-Missing,
+      .imo-status-name-Nonarrival,
+      .imo-status-value-Nonarrival {
+        letter-spacing: 0rem;
+        color: map-get($glory-main-natural, 600);
+      }
+      .imo-status-name-CI-Connector,
+      .imo-status-value-CI-Connector {
+        letter-spacing: 0rem;
+        color: map-get($status, ci-connector);
+      }
+      .imo-status-name-Good,
+      .imo-status-name-Error,
+      .imo-status-name-Warning,
+      .imo-status-name-Missing,
+      .imo-status-value-Good,
+      .imo-status-value-Error,
+      .imo-status-name-Warning,
+      .imo-status-value-Missing,
+      .imo-status-name-Nonarrival,
+      .imo-status-name-CI-Connector,
+      .imo-status-value-CI-Connector {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .imo-highlight-error {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      height: 2.5rem;
+      gap: 0.3125rem;
+      box-sizing: border-box;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      .imo-highlight-title {
+        width: 75%;
+        text-align: left;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
+
+        letter-spacing: 0rem;
+        color: map-get($glory-main-natural, 900);
+      }
+      .imo-highlight-content {
+        width: 25%;
+        text-align: right;
+      }
+    }
+    .content-operator-rate {
+      position: absolute;
+      width: 100%;
+      height: 10rem;
+      .operator-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 3.0625rem auto 0 auto;
+        width: 3.625rem;
+        height: 1.8125rem;
+        text-align: center;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+
+        letter-spacing: 0rem;
+        color: map-get($glory-main-natural, 700);
+      }
+      .operator-percent {
+        position: absolute;
+        width: 100%;
+        height: 2.375rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        top: 4.4375rem;
+        letter-spacing: 0rem;
+        color: map-get($glory-main-natural, 700);
+        font-style: normal;
+        font-variant: normal;
+        font-weight: bold;
+        font-size: 1.75rem;
+        line-height: 2.375rem;
+
+        vertical-align: text-bottom;
+        span {
+          font-style: normal;
+          font-variant: normal;
+          font-weight: bold;
+          display: contents;
+          font-size: 1rem;
+          line-height: 1.375rem;
+
+          span {
+            font-size: 1.625rem;
+            line-height: 2.0625rem;
+          }
+        }
+      }
+    }
+  }
+}

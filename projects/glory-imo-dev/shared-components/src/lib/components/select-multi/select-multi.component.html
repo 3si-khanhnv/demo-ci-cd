@@ -1,0 +1,84 @@
+<div fxFlex="100%" fxLayout="column" class="multiple-select">
+  <!--  search able and select -->
+  <mat-form-field class="form-input" *ngIf="isSearchAble" appearance="outline" floatLabel="never">
+    <input
+      class="mat-select-arrow-wrapper"
+      type="text"
+      matInput
+      #trigger="matAutocompleteTrigger"
+      [placeholder]="label | translates"
+      [matAutocomplete]="auto"
+      [formControl]="formControl"
+      (keydown.enter)="onKeydownEnter()"
+      (input)="onSearchChange($event.target.value)"
+      (blur)="setDisplayValue()"
+      (focus)="onFocus()"
+    />
+
+    <mat-autocomplete #auto="matAutocomplete" [panelWidth]="panelWidth">
+      <mat-option
+        *ngIf="all && isDisplayAll && itemsSearchFilter.length"
+        [class.mat-selected]="lastSelectedItem?.value === 'ALL'"
+        (onSelectionChange)="optionClickedAll(null, $event)"
+        (mousedown)="$event.preventDefault()"
+      >
+        <div (click)="optionClickedAll($event)">
+          <mat-checkbox [checked]="isSelectedAll" (change)="optionClickedAll()" (click)="$event.stopPropagation()">{{
+            (textLabel.all | translate).toUpperCase()
+          }}</mat-checkbox>
+        </div>
+      </mat-option>
+      <mat-option
+        [class.mat-selected]="item.value === lastSelectedItem?.value"
+        *ngFor="let item of itemsSearchFilter"
+        [value]="item.value"
+        (onSelectionChange)="optionEnter($event, item)"
+        (mousedown)="$event.preventDefault()"
+      >
+        <div (click)="optionClicked($event, item)">
+          <mat-checkbox [checked]="item.isSelected" (change)="toggleSelection(item)" (click)="$event.stopPropagation()">
+            {{ item.label | translate }}
+          </mat-checkbox>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <!-- no search, only select -->
+  <mat-form-field
+    class="select-mutil-box select-multi-box-field"
+    appearance="outline"
+    floatLabel="never"
+    [class.has-error]="hasError"
+    *ngIf="!isSearchAble"
+  >
+    <!-- <mat-label class="select-placeholder" *ngIf="!selectedItem || selectedItem.length === 0"> {{ label | translates }}</mat-label> -->
+    <mat-select
+      fxFlex="100%"
+      [aria-label]="label | translates"
+      [(value)]="!isStoryBook ? selectedItem : tempSelected"
+      (selectionChange)="onSelectionChange($event.value)"
+      multiple
+      panelClass="select-multi-box"
+      [disabled]="disabled"
+      [disableOptionCentering]="true"
+      [placeholder]="label | translates"
+    >
+      <mat-select-trigger>
+        <ng-container *ngIf="!displayAllText; else displayAllTextTemplate" [ngTemplateOutlet]="defaultTemplate"></ng-container>
+        <ng-template #displayAllTextTemplate>
+          <ng-container *ngIf="allSelected; else defaultTemplate">{{ textLabel.all | translate }}</ng-container>
+        </ng-template>
+        <ng-template #defaultTemplate>
+          {{ getSelectNotAll() ? getSelectNotAll()[0] : "" }}
+          <span *ngIf="getSelectNotAll() !== false && getSelectNotAll().length > 1">
+            (+{{ getSelectNotAll().length - 1 }} {{ getSelectNotAll()?.length === 2 ? "other" : "others" }})
+          </span>
+        </ng-template>
+      </mat-select-trigger>
+      <mat-option *ngIf="all && items.length" value="all">{{ (textLabel.all | translate).toUpperCase() }}</mat-option>
+      <mat-option *ngFor="let item of items" [value]="item.value">{{ item.label | translate }}</mat-option>
+      <mat-option disabled class="hide-checkbox" *ngIf="allowEmpty && !items.length">{{ emptyLabel | translate }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

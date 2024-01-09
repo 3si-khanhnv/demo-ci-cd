@@ -1,0 +1,25 @@
+<mat-radio-group>
+  <ng-container *ngFor="let radio of radios; let i = index">
+    <mat-radio-button
+      *ngIf="radios.length > 1 && isHideRadioWhenHaveAOption"
+      class="radio-group"
+      data-test="radio-group"
+      value="{{ radio.value }}"
+      [checked]="checkedValue.value === radio.value"
+      [disabled]="radio.isDisable || isDisabled"
+      [class.disable-radio]="radio.isDisable || isDisabled"
+      (change)="onRadioChange($event)"
+    >
+      {{ radio.name }}
+    </mat-radio-button>
+    <ng-container *ngIf="radios.length === 1 && isHideRadioWhenHaveAOption">{{ radio.name }} </ng-container>
+    <imo-form
+      class="form-input"
+      data-test="form-input"
+      [formControl]="radio.formControl"
+      [disabled]="radio.isDisable || isDisabled || checkedValue.value !== radio.value"
+      [inputTextAlgin]="radio.inputTextAlgin"
+      (blur)="radio.onBlurFormControl ? radio.onBlurFormControl($event) : null"
+    ></imo-form>
+  </ng-container>
+</mat-radio-group>

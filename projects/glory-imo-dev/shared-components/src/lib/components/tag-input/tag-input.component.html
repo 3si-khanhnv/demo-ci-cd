@@ -1,0 +1,17 @@
+<div class="tag-input-container" [class.focused]="focused" [class.has-error]="controlValidator.invalid">
+  <div
+    #contentEditable
+    class="tag-input"
+    [contentEditable]="true"
+    [innerHtml]="renderedValue"
+    (keydown)="onKeyDown($event)"
+    (keyup)="onKeyUp($event)"
+    (mouseup)="onMouseUp($event)"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (paste)="onPaste($event)"
+    (cut)="onCut($event)"
+  ></div>
+</div>
+<ng-content *ngIf="controlValidator.invalid" select="[error-message-container]"></ng-content>

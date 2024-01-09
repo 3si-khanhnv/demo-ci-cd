@@ -1,0 +1,23 @@
+<div class="removal-by-day">
+  <div class="label-removal-by-day" *ngIf="labelRemovalByDay">
+    <span class="content-label-removal-by-day"> {{ labelRemovalByDay | translate }} </span>
+  </div>
+  <div class="content-legend-removal-by-day">
+    <div [@content]="_dataRemovalByDay" class="content-removal-by-day" [style.width]="width" [style.height]="height">
+      <div
+        class="piece-removal-by-day"
+        *ngFor="let ele of _dataRemovalByDay"
+        [ngStyle]="{ 'background-color': ele.bgColor, height: ele.percent }"
+      >
+        <span class="value-removal-by-day">
+          {{ ele.current }}
+        </span>
+      </div>
+    </div>
+    <div class="legend-removal-by-day">
+      <div *ngFor="let ele of _dataRemovalByDayTemp">
+        <imo-label-color [color]="ele.bgColor" [label]="ele.label"></imo-label-color>
+      </div>
+    </div>
+  </div>
+</div>

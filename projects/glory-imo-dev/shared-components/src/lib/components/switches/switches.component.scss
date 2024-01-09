@@ -1,0 +1,49 @@
+@import "../../styles.scss";
+:host {
+  ::ng-deep {
+    .toggle-main {
+      display: inline-block;
+      mat-slide-toggle {
+        width: 2rem;
+      }
+
+      .mdc-switch__track {
+        width: 2rem;
+        height: 1rem;
+        border-radius: 0.75rem;
+        opacity: 1;
+      }
+      .mdc-switch__track::before,
+      .mdc-switch:enabled:hover:not(:focus):not(:active) .mdc-switch__track::before {
+        background: map-get($glory-main-natural, 500) !important;
+      }
+
+      .mdc-switch:enabled {
+        .mdc-switch__track {
+          &::after {
+            background: map-get($glory-secondary-blue, 400) !important;
+          }
+        }
+      }
+
+      input[type="checkbox"],
+      .mdc-switch__ripple,
+      .mdc-switch__icons {
+        display: none;
+      }
+
+      .mdc-switch__handle {
+        left: 1px;
+      }
+      .mdc-switch__handle,
+      .mdc-switch__shadow {
+        box-shadow: unset !important;
+        cursor: pointer;
+        width: 0.875rem;
+        height: 0.875rem;
+        background: map-get($colors, white) 0% 0% no-repeat padding-box;
+        opacity: 1;
+      }
+    }
+  }
+}

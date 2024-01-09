@@ -1,0 +1,25 @@
+<div class="select-format">
+  <imo-button
+    class="format-default"
+    [ngClass]="{ disabled: isDisabled }"
+    (clicked)="onSelectedFormat(itemDefault?.value)"
+    data-test="format-default"
+  >
+    {{ itemDefault?.label }}
+  </imo-button>
+
+  <imo-button
+    [ngClass]="{ disabled: isDisabled }"
+    class="drop-down"
+    [matMenuTriggerFor]="isShowMenu ? menu : null"
+    data-test="dropdown-list-button"
+  >
+    <mat-icon>arrow_drop_down</mat-icon>
+  </imo-button>
+
+  <mat-menu #menu="matMenu" xPosition="before" class="select-format-menu">
+    <imo-button *ngFor="let item of items" (clicked)="onSelectedFormat(item.value)">
+      {{ item.label }}
+    </imo-button>
+  </mat-menu>
+</div>

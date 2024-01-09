@@ -1,0 +1,122 @@
+@import "../../styles.scss";
+
+:host {
+  font-family: "Roboto", sans-serif;
+
+  ::ng-deep {
+    .asset-map {
+      imo-button {
+        button {
+          font-size: 1.5rem !important;
+          color: map-get($glory-main-natural, 700);
+          font-weight: bold;
+          p {
+            margin: 0;
+          }
+        }
+        .title-button-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+      }
+    }
+    .is-active {
+      imo-button {
+        button {
+          border: 1px solid map-get($glory-secondary-blue, 400) !important;
+          box-shadow: 0px 0px 0px 1px #228ae64d;
+        }
+      }
+    }
+    imo-button {
+      button {
+        width: 15rem;
+        height: 6.5rem;
+        border: 0.0625rem solid map-get($colors, gray) !important;
+        background-color: map-get($glory-main-natural, 000) !important;
+        border-radius: 0.5rem !important;
+        outline: none !important;
+        &:hover {
+          border: 1px solid map-get($glory-secondary-blue, 400) !important;
+          box-shadow: 0px 0px 0px 1px #228ae64d;
+        }
+      }
+    }
+    .report-button {
+      imo-button {
+        button {
+          width: 19.25rem;
+          height: 6.5rem;
+          padding: 0.625rem 0.5rem 1rem 1rem !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .group-title {
+          display: flex;
+          height: 1.8125rem;
+          width: 100%;
+          justify-content: space-between;
+          margin: 0;
+          .title {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            width: inherit;
+            font-size: 1.5rem;
+            line-height: 1.223;
+            color: #3b475f;
+          }
+          .currencies {
+            border-radius: 0.625rem;
+            background: map-get($glory-main-natural, 200) 0% 0% no-repeat padding-box;
+            padding: 0.125rem 0.5rem 0.125rem 0.5rem;
+            font-size: 0.875rem;
+            height: 1.0625rem;
+            text-align: right;
+            white-space: nowrap;
+            font-weight: bold;
+            margin-top: 0.125rem;
+          }
+        }
+        .money {
+          font-weight: bold;
+          color: map-get($glory-main-natural, 700);
+          position: relative;
+          text-align: right;
+          width: 100%;
+          display: flex;
+          p.value {
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: right;
+            margin: 0 0.5rem 0 0;
+            color: #101624;
+            font-size: 2rem;
+            span {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  mat-tooltip-component {
+    .multiline-tooltip {
+      .mdc-tooltip__surface {
+        font-size: 1.125rem;
+        text-align: right;
+        white-space: pre-line;
+        position: relative;
+        line-height: 1.25;
+      }
+    }
+  }
+}

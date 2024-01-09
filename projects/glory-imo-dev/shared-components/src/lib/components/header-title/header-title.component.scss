@@ -1,0 +1,18 @@
+:host ::ng-deep {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  span {
+    float: left;
+    height: 1.8125rem;
+    text-align: left;
+    font: normal normal normal 24px/29px Roboto;
+    letter-spacing: 0px;
+  }
+  img {
+    float: left;
+    margin-right: 1.0625rem;
+    width: 2.625rem;
+    height: 2.625rem;
+  }
+}

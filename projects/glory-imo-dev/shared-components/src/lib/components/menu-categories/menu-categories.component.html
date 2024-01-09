@@ -1,0 +1,221 @@
+<div class="menu-container" #navBar *ngIf="!isUseDynamicMenu; else dynamic">
+  <ng-container *ngFor="let item of _navItems; let i = index">
+    <ng-container *ngIf="item.children && item.children.length > 0">
+      <button
+        [matMenuTriggerFor]="!item.isDisable && menu"
+        [disabled]="item.isDisable"
+        #menuTrigger="matMenuTrigger"
+        class="flex-item menu-bar"
+        [class]="item.isDisable ? 'disable-item' : 'enable-item'"
+        [ngClass]="activeItem == item.displayName && !item.isDisable ? 'active-item' : ''"
+        [ngStyle]="{ cursor: item.isDisable ? 'default' : 'pointer' }"
+        (click)="setActiveItem(item.displayName)"
+      >
+        <span class="parent-title"> {{ item.displayName | translate }}</span>
+      </button>
+      <mat-menu #menu="matMenu" class="custom-menu-header" [hasBackdrop]="false" [class]="'parent-class'">
+        <ng-container *ngFor="let child of item.children; let i1 = index">
+          <!-- Handle branch node menu items -->
+          <ng-container *ngIf="child.children && child.children.length > 0">
+            <button
+              mat-menu-item
+              class="flex-item"
+              [matMenuTriggerFor]="menuTwo"
+              #menuTriggerChild="matMenuTrigger"
+              [class]="child.isDisable ? 'disable-item' : 'enable-item'"
+              [ngClass]="child.isGroup ? 'active-group' : ''"
+              [ngStyle]="{ cursor: child.isDisable ? 'default' : 'pointer' }"
+              [disabled]="child.isDisable"
+              #button
+            >
+              <span class="child-title">{{ child.displayName | translate }}</span>
+              <imo-svg-icon [url]="iconItem" [alt]="iconItem" [width]="12" [height]="12"></imo-svg-icon>
+
+              <mat-menu #menuTwo="matMenu" class="custom-menu-header" [hasBackdrop]="false">
+                <ng-container *ngFor="let childTwo of child.children; let i2 = index">
+                  <!-- Handle branch node menu items -->
+                  <ng-container *ngIf="childTwo.children && childTwo.children.length > 0">
+                    <button
+                      mat-menu-item
+                      class="flex-item"
+                      [matMenuTriggerFor]="menuThree"
+                      #menuTriggerChild="matMenuTrigger"
+                      [class]="childTwo.isDisable ? 'disable-item' : 'enable-item'"
+                      [ngClass]="childTwo.isGroup ? 'active-group' : ''"
+                      [ngStyle]="{ cursor: childTwo.isDisable ? 'default' : 'pointer' }"
+                      [disabled]="childTwo.isDisable"
+                      #button
+                    >
+                      <span class="child-title">{{ childTwo.displayName | translate }}</span>
+                      <imo-svg-icon [url]="iconItem" [alt]="iconItem" [width]="12" [height]="12"></imo-svg-icon>
+
+                      <mat-menu #menuThree="matMenu" class="custom-menu-header" [hasBackdrop]="false">
+                        <ng-container *ngFor="let childThree of childTwo.children; let i3 = index">
+                          <!-- Handle branch node menu items -->
+                          <ng-container *ngIf="childThree.children && childThree.children.length > 0">
+                            <button
+                              mat-menu-item
+                              class="flex-item"
+                              [matMenuTriggerFor]="menuFour"
+                              #menuTriggerChild="matMenuTrigger"
+                              [class]="childThree.isDisable ? 'disable-item' : 'enable-item'"
+                              [ngClass]="childThree.isGroup ? 'active-group' : ''"
+                              [ngStyle]="{ cursor: childThree.isDisable ? 'default' : 'pointer' }"
+                              [disabled]="childThree.isDisable"
+                              #button
+                            >
+                              <span class="child-title">{{ childThree.displayName | translate }}</span>
+                              <imo-svg-icon [url]="iconItem" [alt]="iconItem" [width]="12" [height]="12"></imo-svg-icon>
+
+                              <mat-menu #menuFour="matMenu" class="custom-menu-header" [hasBackdrop]="false">
+                                <ng-container *ngFor="let childFour of childThree.children; let i4 = index">
+                                  <!-- Handle leaf node menu items -->
+                                  <ng-container *ngIf="!childFour.children || childFour.children.length === 0">
+                                    <button
+                                      mat-menu-item
+                                      class="flex-item"
+                                      [class]="childFour.isDisable ? 'disable-item' : 'enable-item'"
+                                      [ngClass]="childFour.isGroup ? 'active-group' : ''"
+                                      [routerLink]="!childFour.isDisable ? childFour.route : []"
+                                      [disabled]="childFour.isDisable"
+                                      [ngStyle]="{ cursor: childFour.isDisable ? 'default' : 'pointer' }"
+                                    >
+                                      <span class="child-title">{{ childFour.displayName | translate }}</span>
+                                    </button>
+                                  </ng-container>
+                                </ng-container>
+                              </mat-menu>
+                            </button>
+                          </ng-container>
+                          <!-- Handle leaf node menu items -->
+
+                          <ng-container *ngIf="!childThree.children || childThree.children.length === 0">
+                            <button
+                              mat-menu-item
+                              class="flex-item"
+                              [class]="childThree.isDisable ? 'disable-item' : 'enable-item'"
+                              [ngClass]="childThree.isGroup ? 'active-group' : ''"
+                              [routerLink]="!childThree.isDisable ? childThree.route : []"
+                              [disabled]="childThree.isDisable"
+                              [ngStyle]="{ cursor: childThree.isDisable ? 'default' : 'pointer' }"
+                            >
+                              <span class="child-title">{{ childThree.displayName | translate }}</span>
+                            </button>
+                          </ng-container>
+                        </ng-container>
+                      </mat-menu>
+                    </button>
+                  </ng-container>
+
+                  <!-- Handle leaf node menu items -->
+                  <ng-container *ngIf="!childTwo.children || childTwo.children.length === 0">
+                    <button
+                      mat-menu-item
+                      class="flex-item"
+                      [class]="childTwo.isDisable ? 'disable-item' : 'enable-item'"
+                      [ngClass]="childTwo.isGroup ? 'active-group' : ''"
+                      [routerLink]="!childTwo.isDisable ? childTwo.route : []"
+                      [disabled]="childTwo.isDisable"
+                      [ngStyle]="{ cursor: childTwo.isDisable ? 'default' : 'pointer' }"
+                    >
+                      <span class="child-title">{{ childTwo.displayName | translate }}</span>
+                    </button>
+                  </ng-container>
+                </ng-container>
+              </mat-menu>
+            </button>
+          </ng-container>
+
+          <!-- Handle leaf node menu items -->
+          <ng-container *ngIf="!child.children || child.children.length === 0">
+            <button
+              mat-menu-item
+              class="flex-item"
+              [class]="child.isDisable ? 'disable-item' : 'enable-item'"
+              [ngClass]="child.isGroup ? 'active-group' : ''"
+              [routerLink]="!child.isDisable ? child.route : []"
+              [disabled]="child.isDisable"
+              [ngStyle]="{ cursor: child.isDisable ? 'default' : 'pointer' }"
+            >
+              <span class="child-title">{{ child.displayName | translate }}</span>
+            </button>
+          </ng-container>
+        </ng-container>
+      </mat-menu>
+    </ng-container>
+    <ng-container *ngIf="!item.children || item.children.length === 0">
+      <button
+        *ngIf="item.isDisable; else active"
+        [disabled]="item.isDisable"
+        class="flex-item menu-bar disable-item"
+        (click)="setActiveItem(item.displayName)"
+        [ngStyle]="{ cursor: item.isDisable ? 'default' : 'pointer' }"
+      >
+        {{ item.displayName | translate }}
+      </button>
+
+      <ng-template #active>
+        <button
+          [routerLink]="!item.isDisable ? item.route : []"
+          [ngClass]="activeItem == item.displayName && !item.isDisable ? 'active-item' : ''"
+          [ngStyle]="{ cursor: item.isDisable ? 'default' : 'pointer' }"
+          class="flex-item menu-bar enable-item"
+          (click)="setActiveItem(item.displayName)"
+        >
+          {{ item.displayName | translate }}
+        </button></ng-template
+      >
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #dynamic>
+  <div class="menu-container" #navBar>
+    <ng-container *ngFor="let item of _navItems; let i = index">
+      <ng-container *ngIf="item.children && item.children.length > 0">
+        <button
+          [matMenuTriggerFor]="!item.isDisable && menu.childMenu"
+          [disabled]="item.isDisable"
+          #menuTrigger="matMenuTrigger"
+          class="flex-item menu-bar"
+          [class]="item.isDisable ? 'disable-item' : 'enable-item'"
+          [ngClass]="activeItem == i && !item.isDisable ? 'active-item' : ''"
+          [ngStyle]="{ cursor: item.isDisable ? 'default' : 'pointer' }"
+          (click)="setActiveItem(i)"
+        >
+          <span class="parent-title"> {{ item.displayName | translate }}</span>
+        </button>
+        <imo-menu-item
+          #menu
+          [items]="item.children"
+          [customsClass]="customsClass"
+          [iconItem]="iconItem"
+          [indexElement]="item.indexEl"
+        ></imo-menu-item>
+      </ng-container>
+      <ng-container *ngIf="!item.children || item.children.length === 0">
+        <button
+          *ngIf="item.isDisable; else active"
+          [disabled]="item.isDisable"
+          class="flex-item menu-bar disable-item"
+          (click)="setActiveItem(i)"
+          [ngStyle]="{ cursor: item.isDisable ? 'default' : 'pointer' }"
+        >
+          {{ item.displayName | translate }}
+        </button>
+
+        <ng-template #active>
+          <button
+            [routerLink]="!item.isDisable ? item.route : []"
+            [ngClass]="activeItem == item.displayName && !item.isDisable ? 'active-item' : ''"
+            [ngStyle]="{ cursor: item.isDisable ? 'default' : 'pointer' }"
+            class="flex-item menu-bar enable-item"
+            (click)="setActiveItem(item.displayName)"
+          >
+            {{ item.displayName | translate }}
+          </button></ng-template
+        >
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>

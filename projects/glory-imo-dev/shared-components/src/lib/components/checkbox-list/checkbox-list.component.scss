@@ -1,0 +1,12 @@
+.d-block {
+  display: block;
+}
+
+span.label {
+  display: flex;
+  align-items: center;
+
+  imo-svg-icon {
+    margin-right: 0.2rem;
+  }
+}

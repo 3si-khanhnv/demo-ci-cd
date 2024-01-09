@@ -1,0 +1,78 @@
+<div fxLayout="row" class="date-picker" [ngSwitch]="type">
+  <ng-container *ngSwitchCase="'dateTime'" [ngTemplateOutlet]="dateTime"> </ng-container>
+  <ng-container *ngSwitchCase="'dateTimeSelect'" [ngTemplateOutlet]="dateTimeSelect"> </ng-container>
+</div>
+
+<ng-template #dateTimeSelect>
+  <div class="date-time-select">
+    <div class="date-select">
+      <mat-form-field [ngClass]="{ 'form-field-disabled': disabled }" [appearance]="appearance" (click)="datePicker.open()">
+        <input
+          class="input-date-picker"
+          [required]="required"
+          [formControl]="dateFormControl"
+          [min]="minDate"
+          [max]="maxDate"
+          matInput
+          [matDatepicker]="datePicker"
+          [placeholder]="placeholderDate | translate"
+          (dateChange)="handleDateChange($event.value)"
+          aria-label="date picker"
+        />
+        <mat-datepicker-toggle class="md-icon" matSuffix [for]="datePicker">
+          <imo-svg-icon matDatepickerToggleIcon [icon]="'calendar'" [width]="16" [height]="16"></imo-svg-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="time-select">
+      <imo-select
+        #selectTime
+        [isIconTimeSelect]="isIconTimeSelect"
+        [label]=""
+        [disabled]="disabled || disabledTime"
+        [items]="_timeItems"
+        [autoComplete]="true"
+        [selectedItem]="!disabledTime ? _selectedTimeItem : ''"
+        [isReadonly]="isReadonly"
+        [isSetDisplayFilter]="true"
+        (onBlur)="handleBlurSearch($event)"
+        (selected)="handleSelectTime($event)"
+        [onEnter]="true"
+        [clearSearchOnBlur]="true"
+      ></imo-select>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #dateTime>
+  <mat-form-field [appearance]="appearance" (click)="datePicker.open()" class="date-time-picker">
+    <input
+      matInput
+      [required]="required"
+      [readonly]="readonly"
+      [formControl]="dateTimeFormControl"
+      [ngxMatDatetimePicker]="datePicker"
+      [placeholder]="placeholderDate | translate"
+      [max]="maxDate"
+      [min]="minDate"
+      (dateChange)="handleDateTimeChange($event.value)"
+      aria-label="date picker"
+    />
+    <mat-datepicker-toggle class="md-icon" matSuffix [for]="datePicker">
+      <imo-svg-icon matDatepickerToggleIcon [icon]="'calendar'" [width]="16" [height]="16"></imo-svg-icon>
+    </mat-datepicker-toggle>
+    <ngx-mat-datetime-picker
+      #datePicker
+      [showSpinners]="showSpinner"
+      [showSeconds]="showSeconds"
+      [stepHour]="stepHour"
+      [stepMinute]="stepMinute"
+      [stepSecond]="stepSecond"
+      [touchUi]="touchUi"
+      [enableMeridian]="enableMeridian"
+      [hideTime]="hideTime"
+    >
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+</ng-template>

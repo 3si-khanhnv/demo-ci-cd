@@ -1,0 +1,23 @@
+<mat-form-field appearance="outline" class="mat-form-field-date-picker">
+  <input
+    matInput
+    [matDatepickerFilter]="filterDate"
+    [matDatepicker]="picker"
+    [required]="required"
+    [min]="start"
+    [max]="end"
+    [placeholder]="labels?.placeholder || '' | translate"
+    [formControl]="formControl"
+    (dateChange)="onSelect($event.value)"
+    data-test="date-picker"
+    (change)="onChange($event)"
+    autocomplete="off"
+    [readonly]="isReadonly"
+    (click)="picker.open()"
+    (focus)="picker.open()"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker">
+    <imo-svg-icon matDatepickerToggleIcon [icon]="'calendar'" [width]="16" [height]="16"></imo-svg-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

@@ -1,0 +1,20 @@
+<div class="top-inventory-totals" [ngStyle]="setContainerHeight(_height)">
+  <div class="title-location-inventory-totals">
+    <span>
+      {{ title | translate }}
+    </span>
+  </div>
+  <div [class.responsive]="isAutoResponsive" class="horizontalBar">
+    <canvas
+      class="content-horizontalBar"
+      #myCanvas
+      baseChart
+      [data]="_data"
+      [type]="chartType"
+      [options]="chartOptions"
+      [plugins]="pluginChartDataLabels"
+      [width]="width"
+      [height]="_height"
+    ></canvas>
+  </div>
+</div>

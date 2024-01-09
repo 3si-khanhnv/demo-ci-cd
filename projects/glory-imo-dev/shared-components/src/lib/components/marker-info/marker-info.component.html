@@ -1,0 +1,19 @@
+<div class="marker-info-layout" data-test="marker-info-layout">
+  <div class="marker-info-header">
+    <div class="marker-info-title">
+      <p class="company-name">{{ companyName | translate }}-{{ locationName | translate }}</p>
+      <div class="type-list" *ngIf="typeIdList.length > 0" data-test="typeId-list" role="list">
+        <div *ngFor="let i of typeIdList" role="listitem" class="type-item">
+          <span class="type-name">{{ i.name | translate }} :</span>
+          <span class="type-number">{{ i.number }}</span>
+        </div>
+      </div>
+    </div>
+    <a class="close" (click)="onCloseInfo($event)"></a>
+  </div>
+  <div class="marker-info-content" id="info-content" *ngIf="statusInfoList.length > 0">
+    <div class="status-info-item" *ngFor="let e of statusInfoList; trackBy: trackByFn" role="listitem">
+      <imo-status-info [data]="e.data" [type]="e.type" [isResize]="true"> </imo-status-info>
+    </div>
+  </div>
+</div>

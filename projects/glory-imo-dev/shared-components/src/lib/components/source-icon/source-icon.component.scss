@@ -1,0 +1,13 @@
+@import "../../styles.scss";
+
+:host {
+  .source-icon {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+  }
+  .text {
+    color: map-get($glory-secondary-blue, 500);
+    line-height: 1.0625rem;
+  }
+}

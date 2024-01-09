@@ -1,0 +1,4 @@
+[submodule "projects/glory-imo-dev/shared-components/src/assets/i18n"]
+	path = projects/glory-imo-dev/shared-components/src/assets/i18n
+	url = https://github.com/glory-cloud-dev/imo-submodule-language.git
+	branch = develop

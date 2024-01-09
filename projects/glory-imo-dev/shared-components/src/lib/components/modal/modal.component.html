@@ -1,0 +1,44 @@
+<div
+  fxLayout="column"
+  class="inner"
+  cdkDragBoundary=".cdk-overlay-container"
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDrag
+  cdkDragHandle
+  [cdkDragDisabled]="isDisableDragDrop"
+>
+  <div fxFlex="56px" fxLayout="row" class="header" *ngIf="!data?.disableTitle">
+    <h4 fxFlex="100%" mat-dialog-title class="title">
+      <ng-container *ngTemplateOutlet="data.headerRef ? data.headerRef : normalHeader"></ng-container>
+    </h4>
+    <imo-button fxFlex="40px" fxFlexAlign="center" class="cancel-button" (click)="onClose()" *ngIf="data.showCloseButton">×</imo-button>
+  </div>
+  <mat-dialog-content [ngClass]="{ 'message-content': data.message }" [class.no-dialog-title]="data?.disableTitle | translate">
+    <ng-container *ngTemplateOutlet="data.templateRef ? data.templateRef : noContent; context: { taskLink: data.taskLink }"></ng-container>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <imo-button
+      *ngFor="let button of data.buttons"
+      [ngClass]="{ basic: !button?.primary, primary: button?.primary, disabled: button?.isDisabled }"
+      [isDisabled]="button?.isDisabled"
+      (click)="onClose(button.value, button)"
+    >
+      {{ button.name | translate }}
+    </imo-button>
+  </mat-dialog-actions>
+</div>
+<ng-template #noContent>
+  <ng-container *ngIf="data.message; else noContentMessage">
+    <div>
+      <p [innerHTML]="data.message | translate"></p>
+    </div>
+  </ng-container>
+  <ng-template #noContentMessage>
+    <div>{{ textLabelModal.noContent | translate }}</div>
+  </ng-template>
+</ng-template>
+<ng-template #normalHeader>
+  {{ (data.title | translate) || (textLabelModal.noTitle | translate) }}
+</ng-template>
+
+<ng-template> </ng-template>

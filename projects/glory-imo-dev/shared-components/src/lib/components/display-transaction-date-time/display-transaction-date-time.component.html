@@ -1,0 +1,15 @@
+<div [ngClass]="{ 'transaction-active': transactionIdActive === _transaction?.transactionId }">
+  <div class="transaction-date-time">
+    <span class="date-time">{{ dateTime }}</span>
+    <span #timeZoneChild class="time-zone">{{ timeZone }}</span>
+  </div>
+
+  <div class="comment-icon">
+    <div *ngIf="type === 2" (click)="onClickComment($event)">
+      <imo-svg-icon fxFlex="100%" [icon]="plusComment.icon" [height]="24" [width]="24"> </imo-svg-icon>
+    </div>
+    <div *ngIf="type === 3" (click)="onClickComment($event)">
+      <imo-svg-icon fxFlex="100%" [icon]="iconComment.icon" [height]="24" [width]="24"> </imo-svg-icon>
+    </div>
+  </div>
+</div>

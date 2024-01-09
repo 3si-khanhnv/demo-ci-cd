@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+
+  > label {
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    > span {
+      width: 60%;
+    }
+  }
+
+  > imo-checkbox-list {
+    width: 60%;
+  }
+
+  > imo-form,
+  > label > imo-form {
+    width: 40%;
+    ::ng-deep {
+      input {
+        text-align: right;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import "../../styles.scss";
+
+:host {
+  .label-color {
+    display: flex;
+    align-items: center;
+    .label-color-icon {
+      min-width: 1rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 0.1875rem;
+      margin-right: 0.25rem;
+      margin-bottom: 0.0625rem;
+    }
+
+    .label-color-title {
+      font-family: "Roboto";
+      font-size: 0.875rem;
+      color: map-get($glory-main-natural, 900);
+      font-weight: 500;
+      line-height: 17px;
+    }
+  }
+}

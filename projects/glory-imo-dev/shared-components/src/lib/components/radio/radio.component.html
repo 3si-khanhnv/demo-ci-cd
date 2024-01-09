@@ -1,0 +1,16 @@
+<mat-radio-group>
+  <mat-radio-button
+    class="imo-radio-group"
+    *ngFor="let radio of radios"
+    value="{{ radio.value }}"
+    [checked]="checkedValue.value === radio.value"
+    [disabled]="radio.isDisable || isDisabled"
+    (change)="onChange($event)"
+    [class.disable-radio]="radio.isDisable || isDisabled"
+  >
+    <ng-container *ngTemplateOutlet="radio.templateRef ? radio.templateRef : defaultTemplateRef"></ng-container>
+    <ng-template #defaultTemplateRef>
+      {{ radio.name | translate }}
+    </ng-template>
+  </mat-radio-button>
+</mat-radio-group>

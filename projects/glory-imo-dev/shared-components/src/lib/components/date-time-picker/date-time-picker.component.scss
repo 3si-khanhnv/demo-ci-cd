@@ -1,0 +1,253 @@
+@import "../../styles.scss";
+
+::ng-deep .mat-datepicker-content .mat-calendar {
+  min-width: max-content;
+  height: auto !important;
+  max-height: 100vh;
+}
+
+:host {
+  width: 100%;
+  width: 100%;
+
+  input.mat-mdc-input-element {
+    margin-top: 0;
+  }
+
+  input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+::ng-deep {
+  .date-picker {
+    .form-field-disabled .mat-mdc-form-field-wrapper {
+      opacity: 0.5;
+    }
+
+    .date-time-select {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 15rem;
+      max-width: 100%;
+      flex: 1 1;
+
+      .mat-mdc-form-field-flex {
+        --mdc-outlined-text-field-outline-width: 0;
+        --mdc-outlined-text-field-focus-outline-width: 0;
+      }
+
+      .date-select {
+        width: 53.5%;
+        display: flex;
+        flex-wrap: nowrap;
+
+        * {
+          max-width: 100% !important;
+          align-items: center;
+        }
+
+        .mat-mdc-form-field-wrapper {
+          width: 8rem;
+        }
+      }
+
+      .time-select {
+        width: 6.5rem;
+        margin-left: 0.5em;
+        display: flex;
+        flex-wrap: nowrap;
+
+        imo-select {
+          width: 100%;
+          display: flex;
+          flex-wrap: nowrap;
+
+          * {
+            max-width: 100% !important;
+            min-width: auto !important;
+          }
+
+          .mat-mdc-form-field .mat-mdc-form-field-wrapper .mat-mdc-form-field-flex {
+            padding-right: 0;
+          }
+
+          .mat-mdc-form-field .mat-mdc-form-field-wrapper .mat-mdc-form-field-flex .mat-mdc-form-field-infix {
+            padding: 0.5rem 0 0.5rem 0.375rem !important;
+            max-height: 2rem;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            box-sizing: border-box;
+          }
+
+          .mat-form-field-wrapper {
+            width: 6.5rem;
+          }
+        }
+
+        .mat-mdc-text-field-wrapper {
+          border: unset !important;
+
+          .mat-mdc-form-field-infix {
+            padding: 0;
+            input {
+              height: auto;
+            }
+          }
+        }
+      }
+
+      input,
+      imo-select {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+        border: unset;
+      }
+
+      mat-form-field {
+        border: solid 1px #b4b9c7;
+        border-radius: 4px;
+
+        .mat-mdc-text-field-wrapper {
+          padding: 0;
+
+          .mat-mdc-form-field-infix {
+            padding: 4px 0 0 8px;
+
+            input {
+              border: unset;
+            }
+          }
+        }
+      }
+    }
+
+    .mat-mdc-form-field-wrapper {
+      cursor: pointer;
+    }
+
+    > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix {
+      padding: 0.7em 0px !important;
+    }
+
+    .mat-mdc-form-field-appearance-outline .mat-mdc-form-field-outline {
+      color: map-get($glory-main-natural, 400);
+      min-height: 2rem;
+    }
+
+    .mat-mdc-form-field-wrapper .mat-mdc-form-field-infix {
+      padding-bottom: 0;
+
+      input::placeholder {
+        color: map-get($map: $glory-main-natural, $key: 600);
+      }
+    }
+
+    .mat-mdc-form-field-wrapper {
+      > .mat-mdc-form-field-flex {
+        align-items: center;
+        padding-right: 0.25rem;
+      }
+    }
+
+    .mat-mdc-form-field-appearance-outline {
+      .mat-mdc-form-field-suffix {
+        top: 0.25rem;
+
+        mat-datepicker-toggle {
+          > button {
+            &.mat-mdc-icon-button {
+              width: 2rem;
+              height: 2rem;
+            }
+
+            > span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    mat-form-field {
+      .mat-mdc-form-field-flex {
+        height: 32px;
+
+        .mat-mdc-form-field-infix {
+          padding-top: 4px;
+          min-height: 32px;
+
+          input {
+            height: 20px;
+            font-size: 14px;
+            padding-left: 0;
+          }
+        }
+
+        .mat-mdc-form-field-icon-suffix {
+          mat-datepicker-toggle {
+            .mdc-icon-button {
+              height: 32px;
+              width: 32px;
+              padding: 0;
+
+              imo-svg-icon {
+                img {
+                  width: 16px;
+                  height: 16px;
+                }
+              }
+
+              .mat-mdc-button-touch-target,
+              .mat-mdc-button-ripple {
+                width: 32px;
+                height: 32px;
+              }
+            }
+          }
+        }
+      }
+
+      &.date-time-picker {
+        .mat-mdc-text-field-wrapper {
+          padding: 0;
+        }
+
+        .mat-mdc-form-field-flex {
+          padding: 0 0 0 0.65em;
+        }
+
+        .mat-mdc-form-field-icon-suffix {
+          margin-top: -6px;
+          padding: 0 0.5rem 0 0;
+        }
+
+        .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+        .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+          .mdc-notched-outline__leading,
+        .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+          .mdc-notched-outline__notch,
+        .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+        .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+          .mdc-notched-outline__trailing,
+        .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+          border-color: var(--mdc-outlined-text-field-outline-color);
+        }
+      }
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+  }
+}

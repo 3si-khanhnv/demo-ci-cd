@@ -1,0 +1,29 @@
+<div class="top-sales-totals">
+  <div class="title-location-sales-totals" [class.space]="toggleOptions.length" [class.responsive]="isAutoResponsive">
+    <span class="title">
+      {{ title | translate }}
+    </span>
+    <div class="toggle-bar" *ngIf="toggleOptions.length">
+      <imo-button-toggle
+        [toggleOptions]="toggleOptions"
+        [defaultOption]="defaultOption"
+        (selectedOption)="onChangeOption($event)"
+      ></imo-button-toggle>
+    </div>
+  </div>
+  <div #verticalContainer [class.responsive]="isAutoResponsive" class="vertical horizontalBar">
+    <div #canvasContainer style="width: 100%">
+      <canvas
+        class="canvas-vetical-bar"
+        #myCanvas
+        baseChart
+        [data]="_data"
+        [type]="chartType"
+        [options]="chartOptions"
+        [plugins]="pluginChartDataLabels"
+        [width]="width"
+        [height]="height"
+      ></canvas>
+    </div>
+  </div>
+</div>

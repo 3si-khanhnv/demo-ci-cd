@@ -1,0 +1,76 @@
+<mat-form-field
+  [color]="'primary'"
+  appearance="outline"
+  data-test="input-form"
+  [ngClass]="{ 'has-error': showError && formControl.invalid, 'has-error-disable-form': isShowErrorAndDisableForm }"
+  [attr.color]="!(showError && formControl.invalid) && changeFieldColor ? changeFieldColor : null"
+  [attr.readonly]="readonly ? '' : null"
+  [class]="labels?.type === 'textarea' ? 'text-area-tag' : 'input-tag'"
+>
+  <ng-container *ngIf="!readonly; else readonlyTemplate">
+    <ng-container *ngIf="labels?.type === 'textarea'; then thenTemplate; else elseTemplate"></ng-container>
+    <ng-template #thenTemplate>
+      <textarea
+        matInput
+        #inputElement
+        [cdkTextareaAutosize]="autosize"
+        [style.textAlign]="inputTextAlgin"
+        [placeholder]="labels?.placeholder | translate"
+        [attr.aria-label]="labels?.aria"
+        [formControl]="formControl"
+        (keyup)="onKeyUp()"
+        (blur)="blurChange.emit($event)"
+        [attr.disabled]="isShowErrorAndDisableForm || null"
+      ></textarea>
+    </ng-template>
+    <ng-template #elseTemplate>
+      <input
+        matInput
+        #inputElement
+        [style.textAlign]="inputTextAlgin"
+        [type]="labels?.type || 'text'"
+        [placeholder]="labels?.placeholder | translate"
+        [attr.aria-label]="labels?.aria"
+        [formControl]="formControl"
+        (change)="$event.stopPropagation()"
+        (blur)="blurChange.emit($event)"
+        [attr.disabled]="isShowErrorAndDisableForm || null"
+      />
+    </ng-template>
+  </ng-container>
+
+  <ng-template #readonlyTemplate>
+    <ng-container *ngIf="labels?.type === 'textarea'; then readonlyThenTemplate; else readonlyElseTemplate"></ng-container>
+    <ng-template #readonlyThenTemplate>
+      <textarea
+        matInput
+        #inputElement
+        [style.textAlign]="inputTextAlgin"
+        [placeholder]="labels?.placeholder | translate"
+        [attr.aria-label]="labels?.aria"
+        [value]="formControl.value"
+        [disabled]="true"
+      ></textarea>
+    </ng-template>
+    <ng-template #readonlyElseTemplate>
+      <input
+        matInput
+        #inputElement
+        [style.textAlign]="inputTextAlgin"
+        [type]="labels?.type || 'text'"
+        [placeholder]="labels?.placeholder | translate"
+        [attr.aria-label]="labels?.aria"
+        [value]="formControl.value"
+        [disabled]="true"
+      />
+    </ng-template>
+  </ng-template>
+</mat-form-field>
+
+<ng-container *ngIf="showError && formControl.invalid && formControl.errors.duplicated">
+  <span class="has-error">{{ formControl.errors.duplicated }}</span>
+</ng-container>
+
+<ng-container *ngIf="formControl.invalid && formControl.errors.existCustomerNumber">
+  <span class="has-error">{{ formControl.errors.existCustomerNumber }}</span>
+</ng-container>
